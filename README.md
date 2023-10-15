@@ -22,7 +22,7 @@ persistence layer is required.
 
 ## Explainer
 
-I made the decision to track the game state rather using a dictionary rather than implementing a 2D grid as a board. My rationals are that:
+I made the decision to track the game state using a dictionary rather than implementing a 2D grid as a board. My rationals are that:
 
 - Using a dictionary to track the game state is more memory-efficient as we only store information for non-empty cases.
 - A dictionary generally offers better time complexity.
