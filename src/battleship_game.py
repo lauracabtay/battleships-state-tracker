@@ -50,9 +50,7 @@ class BattleshipGame:
         """
         try:
             head_row, head_col = self._position_to_coord(position)
-
             self._place_ship(ship_size, head_row, head_col, orientation)
-
         except (
             InvalidInput,
             InvalidPosition,
@@ -95,45 +93,40 @@ class BattleshipGame:
             return True
         return False
 
-
     def print_state_tracker(self):
         """
         Print the current game board state.
         """
         pprint(self.state_tracker)
 
-
     def _position_to_coord(self, position) -> tuple[int, int]:
-        # Convert a valid position string to row and column coordinates
+        # Method converting a valid position string to row and column coordinates
 
         if not self._is_valid_position(position):
             raise InvalidPosition("Invalid position format.")
 
         # Row index calculation based on the first uppercase character in 'position'.
         row = ord(position[0].upper()) - ord("A")
-
         # Column index calculation from the numeric part of 'position',adjusted for 0-based indexing.
         col = int(position[1:]) - 1
-
         return row, col
 
     def _is_valid_position(self, position) -> bool:
-        # Check if the position format is valid.
+        # Method checking if the position format is valid.
 
         # Regex checks if string starts with 1 letter and ends with 1 to 2 digits
         pattern = re.compile(r"^[A-Za-z]{1}\d{1,2}$")
         return bool(pattern.match(position))
 
     def _is_valid_input(self, ship_size, orientation) -> bool:
-        # Check if the input values when adding a battleship are valid.
+        # Method checking if the input values when adding a battleship are valid.
         return isinstance(ship_size, int) and orientation in [
             BattleshipGame.HORIZONTAL,
             BattleshipGame.VERTICAL,
         ]
 
     def _is_outbound(self, ship_size, head_row, head_col, orientation) -> bool:
-        # Check if the battleship is out of bounds.
-
+        # Method checking if the battleship is out of bounds.
         if orientation == BattleshipGame.HORIZONTAL:
             # Check if ship's head column is out of bounds
             # Check if last column of the ship is out of bounds
@@ -155,7 +148,7 @@ class BattleshipGame:
         return False
 
     def _is_overlapping(self, ship_size, row, col, orientation) -> bool:
-        # Check if the space is already occupied by a battleship.
+        # Method checking if the space is already occupied by a battleship.
 
         if orientation == BattleshipGame.HORIZONTAL:
             for i in range(ship_size):
@@ -176,17 +169,17 @@ class BattleshipGame:
         return False
 
     def _place_ship(self, ship_size, head_row, head_col, orientation) -> None:
-        # Place a battleship on the gameboard.
+        # Method placing a battleship on the gameboard.
 
         if not self._is_valid_input(ship_size, orientation):
             raise InvalidInput("Invalid input.")
-        
+
         if self._is_outbound(ship_size, head_row, head_col, orientation):
             raise OutboundException("Position is out of bounds.")
 
         if self._is_overlapping(ship_size, head_row, head_col, orientation):
             raise OverlapException("Space is already occupied.")
-        
+
         for i in range(ship_size):
             if orientation == BattleshipGame.HORIZONTAL:
                 self.state_tracker[(head_row, head_col + i)] = BattleshipGame.OCCUPIED

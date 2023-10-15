@@ -1,4 +1,4 @@
-class TestBattleshipGame():
+class TestBattleshipGame:
     def test_add_battleship_valid(self, game_with_ship):
         game = game_with_ship
         assert game.state_tracker == {
@@ -27,7 +27,7 @@ class TestBattleshipGame():
 
         assert "Position is out of bounds." in captured.out
         assert not game.state_tracker
-        
+
     def test_add_battleship_overlap(self, capsys, game_with_ship):
         game = game_with_ship
         game.add_battleship(3, "A2", "horizontal")
@@ -62,7 +62,7 @@ class TestBattleshipGame():
             (0, 0): "Occupied",
             (0, 1): "Occupied",
             (0, 2): "Occupied",
-            (1, 1): "Miss"
+            (1, 1): "Miss",
         }
 
     def test_attack_position_invalid_position(self, capsys, game):
@@ -71,7 +71,7 @@ class TestBattleshipGame():
 
         assert "Invalid position format." in captured.out
         assert not game.state_tracker
-    
+
     def test_is_game_over_empty_board(self, game):
         result = game.is_game_over()
 
@@ -89,7 +89,7 @@ class TestBattleshipGame():
 
         for i in range(3):
             game.attack_position(f"A{i + 1}")
-            
+
         result = game.is_game_over()
         captured = capsys.readouterr()
 
@@ -101,4 +101,7 @@ class TestBattleshipGame():
         game.print_state_tracker()
         captured = capsys.readouterr()
 
-        assert "{(0, 0): 'Occupied', (0, 1): 'Occupied', (0, 2): 'Occupied'}" in captured.out
+        assert (
+            "{(0, 0): 'Occupied', (0, 1): 'Occupied', (0, 2): 'Occupied'}"
+            in captured.out
+        )

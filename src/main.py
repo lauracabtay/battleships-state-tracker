@@ -21,7 +21,7 @@ def main():
     battleship_game.add_battleship(3, "A3", "horizontal")  # In bounds
     battleship_game.add_battleship(3, "A5", "horizontal")  # Overlap
     battleship_game.add_battleship(3, "F3", "vertical")  # In bounds
-    
+
     battleship_game.print_state_tracker()
 
     # Attack
@@ -32,7 +32,7 @@ def main():
     battleship_game.attack_position("F3")
     battleship_game.attack_position("G3")
     battleship_game.attack_position("H3")
-    
+
     battleship_game.print_state_tracker()
 
 
