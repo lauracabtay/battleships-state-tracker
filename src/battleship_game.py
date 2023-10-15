@@ -17,9 +17,9 @@ class BattleshipGame:
         An enumeration representing ship statuses.
         """
 
-        OCCUPIED = "Occupied"
         HIT = "Hit"
         MISS = "Miss"
+        OCCUPIED = "Occupied"
 
     class Orientation(Enum):
         """
@@ -30,8 +30,8 @@ class BattleshipGame:
         VERTICAL = "vertical"
 
     HIT = ShipStatus.HIT.value
-    OCCUPIED = ShipStatus.OCCUPIED.value
     MISS = ShipStatus.MISS.value
+    OCCUPIED = ShipStatus.OCCUPIED.value
     HORIZONTAL = Orientation.HORIZONTAL.value
     VERTICAL = Orientation.VERTICAL.value
 
