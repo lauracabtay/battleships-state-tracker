@@ -15,7 +15,9 @@ persistence layer is required.
 ## Getting started
 
 **Install dependencies**: `pip install -r requirements.txt`
+
 **Run tests:** `pytest tests/`
+
 **Run app:** `python src/main.py`
 
 ## Explainer
