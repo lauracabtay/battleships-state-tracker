@@ -100,8 +100,6 @@ class BattleshipGame:
         pprint(self.state_tracker)
 
     def _position_to_coord(self, position) -> tuple[int, int]:
-        # Method converting a valid position string to row and column coordinates
-
         if not self._is_valid_position(position):
             raise InvalidPosition("Invalid position format.")
 
@@ -112,21 +110,17 @@ class BattleshipGame:
         return row, col
 
     def _is_valid_position(self, position) -> bool:
-        # Method checking if the position format is valid.
-
         # Regex checks if string starts with 1 letter and ends with 1 to 2 digits
         pattern = re.compile(r"^[A-Za-z]{1}\d{1,2}$")
         return bool(pattern.match(position))
 
     def _is_valid_input(self, ship_size, orientation) -> bool:
-        # Method checking if the input values when adding a battleship are valid.
         return isinstance(ship_size, int) and orientation in [
             BattleshipGame.HORIZONTAL,
             BattleshipGame.VERTICAL,
         ]
 
     def _is_outbound(self, ship_size, head_row, head_col, orientation) -> bool:
-        # Method checking if the battleship is out of bounds.
         if orientation == BattleshipGame.HORIZONTAL:
             # Check if ship's head column is out of bounds
             # Check if last column of the ship is out of bounds
@@ -148,8 +142,6 @@ class BattleshipGame:
         return False
 
     def _is_overlapping(self, ship_size, row, col, orientation) -> bool:
-        # Method checking if the space is already occupied by a battleship.
-
         if orientation == BattleshipGame.HORIZONTAL:
             for i in range(ship_size):
                 check_position = (row, col + i)
@@ -169,8 +161,6 @@ class BattleshipGame:
         return False
 
     def _place_ship(self, ship_size, head_row, head_col, orientation) -> None:
-        # Method placing a battleship on the gameboard.
-
         if not self._is_valid_input(ship_size, orientation):
             raise InvalidInput("Invalid input.")
 
