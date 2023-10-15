@@ -47,12 +47,6 @@ class BattleshipGame:
             ship_size (int): The size of the battleship.
             position (str): The starting position of the battleship (e.g., "A1").
             orientation (str): The orientation of the battleship ("horizontal" or "vertical").
-
-        Raises:
-            InvalidInput: If the input is invalid.
-            InvalidPosition: If the position format is invalid.
-            OutboundException: If the position is out of bounds.
-            OverlapException: If the space is already occupied.
         """
         try:
             head_row, head_col = self._position_to_coord(position)
