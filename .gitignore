@@ -1,0 +1,11 @@
+# Virtual Environment
+venv/
+
+# Cached Files
+*.pyc
+__pycache__/
+.pytest_cache/
+
+# Editor/IDE Specific Files
+.vscode/
+.idea/
